@@ -33,6 +33,12 @@ class LinkedList {
       return count;
     }
   }
+  head() {
+    return head;
+  }
+  tail() {
+    return tail;
+  }
 }
 
 class Node {
