@@ -19,6 +19,20 @@ class LinkedList {
       tail = head;
     }
   }
+  size() {
+    let count = 0;
+    if (head === undefined) {
+      return count;
+    } else {
+      let currentNode = head;
+      count = 1;
+      while (currentNode.nextNode !== null) {
+        currentNode = currentNode.nextNode;
+        count++;
+      }
+      return count;
+    }
+  }
 }
 
 class Node {
