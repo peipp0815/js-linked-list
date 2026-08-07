@@ -11,6 +11,14 @@ class LinkedList {
       head = tail;
     }
   }
+  prepend(value) {
+    if (head !== undefined) {
+      head = new Node(value, head);
+    } else {
+      head = new Node(value, null);
+      tail = head;
+    }
+  }
 }
 
 class Node {
