@@ -39,6 +39,21 @@ class LinkedList {
   tail() {
     return tail;
   }
+  at(index) {
+    let count = 0;
+    if (Number.isInteger(index) && index >= 0 && head !== undefined) {
+      let currentNode = head;
+      while (count !== index && currentNode.nextNode !== null) {
+        count++;
+        currentNode = currentNode.nextNode;
+      }
+      if (count !== index) {
+        return undefined;
+      } else {
+        return currentNode.value;
+      }
+    }
+  }
 }
 
 class Node {
