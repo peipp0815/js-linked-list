@@ -86,6 +86,19 @@ class LinkedList {
     }
     return -1;
   }
+  toString() {
+    let string = "";
+    if (head === undefined) {
+      return string;
+    } else {
+      let currentNode = head;
+      while (currentNode !== null) {
+        string += `( ${currentNode.value} ) -> `;
+        currentNode = currentNode.nextNode;
+      }
+      return string + "null";
+    }
+  }
 }
 
 class Node {
