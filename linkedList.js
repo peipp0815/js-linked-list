@@ -34,10 +34,10 @@ class LinkedList {
     }
   }
   head() {
-    return head;
+    return head.value;
   }
   tail() {
-    return tail;
+    return tail.value;
   }
   at(index) {
     let count = 0;
@@ -53,6 +53,17 @@ class LinkedList {
         return currentNode.value;
       }
     }
+  }
+  pop() {
+    const result = head.value;
+    if (head !== undefined) {
+      if (head.nextNode !== null) {
+        head = head.nextNode;
+      } else {
+        head = undefined;
+      }
+    }
+    return result;
   }
 }
 
