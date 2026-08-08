@@ -1,14 +1,14 @@
 class LinkedList {
   headNode;
-  tailNode;
   append(value) {
-    if (this.tailNode !== undefined) {
-      const helptailNode = this.tailNode;
-      this.tailNode = new Node(value, null);
-      helptailNode.nextNode = this.tailNode;
+    if (this.headNode !== undefined) {
+      let currentNode = this.headNode;
+      while (currentNode.nextNode !== null) {
+        currentNode = currentNode.nextNode;
+      }
+      currentNode.nextNode = new Node(value, null);
     } else {
-      this.tailNode = new Node(value, null);
-      this.headNode = this.tailNode;
+      this.headNode = new Node(value, null);
     }
   }
   prepend(value) {
@@ -16,7 +16,6 @@ class LinkedList {
       this.headNode = new Node(value, this.headNode);
     } else {
       this.headNode = new Node(value, null);
-      this.tailNode = this.headNode;
     }
   }
   size() {
@@ -37,7 +36,15 @@ class LinkedList {
     return this.headNode.value;
   }
   tail() {
-    return this.tailNode.value;
+    if (this.headNode !== undefined) {
+      let tailNode = this.headNode;
+      while (tailNode.nextNode !== null) {
+        tailNode = tailNode.nextNode;
+      }
+    } else {
+      return undefined;
+    }
+    return tailNode.value;
   }
   at(index) {
     let count = 0;
@@ -100,6 +107,35 @@ class LinkedList {
       return string + "null";
     }
   }
+  /*
+  insertAt(index, ...values) {
+    if (Number.isInteger(index)) {
+      if (index >= 0 && index <= this.size()) {
+        let count = 0;
+        if (index === 0) {
+          values.reverse.forEach((element) => {
+            this.prepend(element);
+          });
+          return;
+        }
+        while (currentNode !== null) {
+          if (count === index) {
+            currentNode.nextNode = values[0];
+            for (let i = 0; i < values.length; i++) {
+              const tempNode = new Node(values[i], null);
+            }
+          }
+          currentNode = currentNode.nextNode;
+          count++;
+        }
+      } else {
+        throw new RangeError("Index not in range.");
+      }
+    } else {
+      throw new TypeError("Index must be an integer.");
+    }
+  }
+    */
 }
 
 class Node {
