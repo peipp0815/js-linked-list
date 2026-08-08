@@ -1,30 +1,30 @@
 class LinkedList {
-  head;
-  tail;
+  headNode;
+  tailNode;
   append(value) {
-    if (tail !== undefined) {
-      const helpTail = tail;
-      tail = new Node(value, null);
-      helpTail.nextNode = tail;
+    if (this.tailNode !== undefined) {
+      const helptailNode = this.tailNode;
+      this.tailNode = new Node(value, null);
+      helptailNode.nextNode = this.tailNode;
     } else {
-      tail = new Node(value, null);
-      head = tail;
+      this.tailNode = new Node(value, null);
+      this.headNode = this.tailNode;
     }
   }
   prepend(value) {
-    if (head !== undefined) {
-      head = new Node(value, head);
+    if (this.headNode !== undefined) {
+      this.headNode = new Node(value, this.headNode);
     } else {
-      head = new Node(value, null);
-      tail = head;
+      this.headNode = new Node(value, null);
+      this.tailNode = this.headNode;
     }
   }
   size() {
     let count = 0;
-    if (head === undefined) {
+    if (this.headNode === undefined) {
       return count;
     } else {
-      let currentNode = head;
+      let currentNode = this.headNode;
       count = 1;
       while (currentNode.nextNode !== null) {
         currentNode = currentNode.nextNode;
@@ -34,15 +34,15 @@ class LinkedList {
     }
   }
   head() {
-    return head.value;
+    return this.headNode.value;
   }
   tail() {
-    return tail.value;
+    return this.tailNode.value;
   }
   at(index) {
     let count = 0;
-    if (Number.isInteger(index) && index >= 0 && head !== undefined) {
-      let currentNode = head;
+    if (Number.isInteger(index) && index >= 0 && this.headNode !== undefined) {
+      let currentNode = this.headNode;
       while (count !== index && currentNode.nextNode !== null) {
         count++;
         currentNode = currentNode.nextNode;
@@ -55,19 +55,19 @@ class LinkedList {
     }
   }
   pop() {
-    const result = head.value;
-    if (head !== undefined) {
-      if (head.nextNode !== null) {
-        head = head.nextNode;
+    const result = this.headNode.value;
+    if (this.headNode !== undefined) {
+      if (this.headNode.nextNode !== null) {
+        this.headNode = this.headNode.nextNode;
       } else {
-        head = undefined;
+        this.headNode = undefined;
       }
     }
     return result;
   }
   contains(value) {
-    if (head !== undefined) {
-      let currentNode = head;
+    if (this.headNode !== undefined) {
+      let currentNode = this.headNode;
       while (currentNode !== null) {
         if (currentNode.value === value) return true;
         currentNode = currentNode.nextNode;
@@ -76,22 +76,23 @@ class LinkedList {
     return false;
   }
   findIndex(value) {
-    if (head !== undefined) {
+    if (this.headNode !== undefined) {
       let index = 0;
-      let currentNode = head;
+      let currentNode = this.headNode;
       while (currentNode !== null) {
         if (currentNode.value === value) return index;
         currentNode = currentNode.nextNode;
+        index++;
       }
     }
     return -1;
   }
   toString() {
     let string = "";
-    if (head === undefined) {
+    if (this.headNode === undefined) {
       return string;
     } else {
-      let currentNode = head;
+      let currentNode = this.headNode;
       while (currentNode !== null) {
         string += `( ${currentNode.value} ) -> `;
         currentNode = currentNode.nextNode;
@@ -107,3 +108,5 @@ class Node {
     this.nextNode = nextNode;
   }
 }
+
+export { LinkedList };
