@@ -1,0 +1,27 @@
+{
+  "name": "js-linked-list",
+  "version": "1.0.0",
+  "description": "Practicing linked lists",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peipp0815/js-linked-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/peipp0815/js-linked-list/issues"
+  },
+  "homepage": "https://github.com/peipp0815/js-linked-list#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.6.8",
+    "webpack": "^5.109.2",
+    "webpack-cli": "^7.2.2",
+    "webpack-dev-server": "^6.0.0"
+  }
+}

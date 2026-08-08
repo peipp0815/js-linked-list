@@ -41,10 +41,10 @@ class LinkedList {
       while (tailNode.nextNode !== null) {
         tailNode = tailNode.nextNode;
       }
+      return tailNode.value;
     } else {
       return undefined;
     }
-    return tailNode.value;
   }
   at(index) {
     let count = 0;
@@ -107,27 +107,41 @@ class LinkedList {
       return string + "null";
     }
   }
-  /*
+
   insertAt(index, ...values) {
     if (Number.isInteger(index)) {
       if (index >= 0 && index <= this.size()) {
-        let count = 0;
         if (index === 0) {
-          values.reverse.forEach((element) => {
+          const reversed = values.reverse();
+          reversed.forEach((element) => {
             this.prepend(element);
           });
           return;
         }
+
+        if (index === this.size()) {
+          values.forEach((element) => {
+            this.append(element);
+          });
+          return;
+        }
+
+        let count = 1;
+        let currentNode = this.headNode;
         while (currentNode !== null) {
+          const prevIndexNode = currentNode.nextNode;
           if (count === index) {
-            currentNode.nextNode = values[0];
             for (let i = 0; i < values.length; i++) {
-              const tempNode = new Node(values[i], null);
+              const node = new Node(values[i]);
+              currentNode.nextNode = node;
+              currentNode = node;
             }
+            currentNode.nextNode = prevIndexNode;
           }
           currentNode = currentNode.nextNode;
           count++;
         }
+        return;
       } else {
         throw new RangeError("Index not in range.");
       }
@@ -135,7 +149,6 @@ class LinkedList {
       throw new TypeError("Index must be an integer.");
     }
   }
-    */
 }
 
 class Node {
