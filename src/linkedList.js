@@ -149,6 +149,32 @@ class LinkedList {
       throw new TypeError("Index must be an integer.");
     }
   }
+
+  removeAt(index) {
+    if (Number.isInteger(index)) {
+      if (index >= 0 && index < this.size()) {
+        if (index === 0) {
+          this.pop();
+        }
+        let count = 0;
+        if (this.headNode !== undefined) {
+          let currentNode = this.headNode;
+          while (currentNode !== null) {
+            count++;
+            if (count === index) {
+              currentNode.nextNode = currentNode.nextNode.nextNode;
+              return;
+            }
+            currentNode = currentNode.nextNode;
+          }
+        }
+      } else {
+        throw new RangeError("Index not in range.");
+      }
+    } else {
+      throw new TypeError("Index must be an integer.");
+    }
+  }
 }
 
 class Node {
